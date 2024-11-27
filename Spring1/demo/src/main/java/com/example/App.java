@@ -8,8 +8,15 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        Desktop desktop = context.getBean(Desktop.class);
-        desktop.compile();
+        Alien obj1 = context.getBean(Alien.class);
+        System.out.println(obj1.getAge());
+        obj1.code();
+
+//        Desktop desktop1 = context.getBean(Desktop.class);
+//        desktop1.compile();
+//
+//        Desktop desktop2 = context.getBean(Desktop.class);
+//        desktop2.compile();
 
         // ApplicationContext context = new
         // ClassPathXmlApplicationContext("spring.xml");
@@ -21,7 +28,7 @@ public class App {
 
         // obj1.code();
 
-        // Desktop obj2 = context.getBean("desktop", Desktop.class);
+        // Desktop obj2 = context.getBean("desktop2", Desktop.class);
 
     }
 }
