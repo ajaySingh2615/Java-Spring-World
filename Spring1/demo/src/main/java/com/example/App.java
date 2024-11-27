@@ -1,24 +1,27 @@
 package com.example;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.example.config.AppConfig;
 
-/**
- * Hello world!
- *
- */
 public class App {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        Alien obj1 = context.getBean("alien", Alien.class);
-        // obj1.setAge(100);
+        Desktop desktop = context.getBean(Desktop.class);
+        desktop.compile();
 
-        System.out.println(obj1.getAge());
+        // ApplicationContext context = new
+        // ClassPathXmlApplicationContext("spring.xml");
 
-        obj1.code();
+        // Alien obj1 = context.getBean("alien", Alien.class);
+        // // obj1.setAge(100);
 
-        Desktop obj2 = context.getBean("desktop", Desktop.class);
+        // System.out.println(obj1.getAge());
+
+        // obj1.code();
+
+        // Desktop obj2 = context.getBean("desktop", Desktop.class);
 
     }
 }
