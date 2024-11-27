@@ -3,15 +3,25 @@ package com.example;
 public class Alien {
 
     private int age;
-    private Laptop laptop;
+    private Computer computer;
 
     public Alien() {
-        System.out.println("Alien object created");
+        // System.out.println("Alien object created");
+    }
+
+    // public Alien(int age) {
+    //     System.out.println("Para constructor is called...");
+    //     this.age = age;
+    // }
+
+    public Alien(int age, Computer computer) {
+        this.age = age;
+        this.computer = computer;
     }
 
     public void code() {
         System.out.println("Coding...");
-        laptop.compile();
+        computer.compile();
     }
 
     public int getAge() {
@@ -22,11 +32,11 @@ public class Alien {
         this.age = age;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public Computer getcomputer() {
+        return computer;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setcomputer(Computer computer) {
+        this.computer = computer;
     }
 }

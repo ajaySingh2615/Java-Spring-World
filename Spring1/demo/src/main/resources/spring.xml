@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="alien" class="com.example.Alien">
+    <bean id="alien" class="com.example.Alien" autowire="byType">
+        <!-- <constructor-arg type="com.example.Laptop" ref="laptop" />
+        <constructor-arg type="int" value="21" /> -->
+
+        <!-- <constructor-arg index="1" ref="laptop"></constructor-arg>
+        <constructor-arg index="0" value="21"></constructor-arg> -->
+
+        <!-- <constructor-arg name="age" value="21"></constructor-arg>
+        <constructor-arg name="laptop" ref="laptop"></constructor-arg> -->
+
+
         <property name="age" value="21"></property>
-        <property name="laptop" ref="laptop"></property>
+        <property name="computer" ref="computer" />
     </bean>
-    <bean id="laptop" class="com.example.Laptop">
+
+    <bean id="computer" class="com.example.Laptop" primary="true">
+    </bean>
+    <bean id="computer1" class="com.example.Desktop" lazy-init="true">
     </bean>
 
 </beans>
-
