@@ -16,8 +16,8 @@ public class JobService {
 	
 	
 	//method to return all JobPosts
-	public List<JobPost> returnAllJobPosts() {
-		return repo.returnAllJobPosts();
+	public List<JobPost> getAllJobs() {
+		return repo.getAllJobs();
 
 		
 	}
@@ -38,5 +38,5 @@ public class JobService {
 	
 	}
 
-	
+
 }
