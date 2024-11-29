@@ -12,31 +12,23 @@ import com.cadt.jobapplication.repo.JobRepo;
 public class JobService {
 	@Autowired
 	public JobRepo repo;
-	
-	
-	
-	//method to return all JobPosts
+
+	// method to return all JobPosts
 	public List<JobPost> getAllJobs() {
 		return repo.getAllJobs();
 
-		
 	}
-	
-	
-	
-	
 
 	// ***************************************************************************
 
-
-	
-	
-	
 	// method to add a jobPost
 	public void addJobPost(JobPost jobPost) {
-		 repo.addJobPost(jobPost);
-	
+		repo.addJobPost(jobPost);
+
 	}
 
+	public JobPost getJob(int postId) {
+		return repo.getJob(postId);
+	}
 
 }
