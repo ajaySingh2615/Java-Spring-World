@@ -7,6 +7,7 @@ import com.cadt.jobapplication.service.JobService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,9 +25,9 @@ public class JobRestController {
         return service.getAllJobs();
     }
 
-    @GetMapping("jobPost/3")
-    public JobPost getJob(){
-        return service.getJob(3);
+    @GetMapping("jobPost/{postId}")
+    public JobPost getJob(@PathVariable("postId") int postId){
+        return service.getJob(postId);
     }
 
 }
