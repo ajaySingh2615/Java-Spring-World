@@ -15,7 +15,7 @@ public class Main {
         ApplicationContext context = SpringApplication.run(Main.class, args);
 
         Student student = context.getBean(Student.class);
-        student.setRollNo(10);
+        student.setRollNo(104);
         student.setName("Ajay");
         student.setMarks(92);
 
