@@ -1,6 +1,8 @@
-package com.cadt.jobapplication.model;
+package com.telusko.springbootrest.model;
+
 
 import java.util.List;
+
 
 import org.springframework.stereotype.Component;
 import lombok.AllArgsConstructor;
@@ -13,10 +15,12 @@ import lombok.NoArgsConstructor;
 @Component
 public class JobPost {
 
+
 	private int postId;
 	private String postProfile; 
 	private String postDesc;
 	private Integer reqExperience;
 	private List<String> postTechStack;
+	
 
 }
