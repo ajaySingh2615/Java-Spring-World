@@ -1,46 +1,46 @@
-import React from "react";
-import * as ReactDom from "react-dom/client";
+import React, { useState } from "react";
+import * as ReactDOM from "react-dom/client";
 import "./index.css";
 
 const pizzaData = [
   {
     name: "Focaccia",
-    ingredients: "Bread with italian olive oil and rosemary",
+    ingredients: "Bread with Italian olive oil and rosemary",
     price: 6,
     photoName: "pizzas/focaccia.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Margherita",
-    ingredients: "Tomato and mozarella",
+    ingredients: "Tomato and mozzarella",
     price: 10,
     photoName: "pizzas/margherita.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Spinaci",
-    ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
+    ingredients: "Tomato, mozzarella, spinach, and ricotta cheese",
     price: 12,
     photoName: "pizzas/spinaci.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Funghi",
-    ingredients: "Tomato, mozarella, mushrooms, and onion",
+    ingredients: "Tomato, mozzarella, mushrooms, and onion",
     price: 12,
     photoName: "pizzas/funghi.jpg",
     soldOut: false,
   },
   {
     name: "Pizza Salamino",
-    ingredients: "Tomato, mozarella, and pepperoni",
+    ingredients: "Tomato, mozzarella, and pepperoni",
     price: 15,
     photoName: "pizzas/salamino.jpg",
     soldOut: true,
   },
   {
     name: "Pizza Prosciutto",
-    ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
+    ingredients: "Tomato, mozzarella, ham, arugula, and burrata cheese",
     price: 18,
     photoName: "pizzas/prosciutto.jpg",
     soldOut: false,
@@ -48,11 +48,13 @@ const pizzaData = [
 ];
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
   return (
-    <div className="container">
+    <div className={`container ${darkMode ? "dark" : "light"}`}>
       <Header />
-      <Menu />
-      <Footer />
+      <Menu pizzas={pizzaData} />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 }
@@ -60,79 +62,74 @@ function App() {
 function Header() {
   return (
     <header className="header">
-      <h1>Fast React Pizza Co.</h1>;
+      <h1>Fast React Pizza Co.</h1>
     </header>
   );
 }
 
-function Menu() {
-  const pizzas = pizzaData;
-  // const pizzas = [];
-  const numPizzas = pizzas.length;
+function Menu({ pizzas }) {
+  const pizzaOfTheDay = pizzas.find((pizza) => !pizza.soldOut);
 
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-
-      {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObject={pizza} key={pizza.name} />
-          ))}
-        </ul>
+      <p className="intro">
+        Enjoy the finest selection of pizzas crafted to perfection!
+      </p>
+      {pizzas.length > 0 ? (
+        <>
+          <div className="pizza-of-the-day">
+            <h3>Pizza of the Day</h3>
+            {pizzaOfTheDay ? (
+              <Pizza pizzaObject={pizzaOfTheDay} />
+            ) : (
+              <p>Currently, no pizza of the day available!</p>
+            )}
+          </div>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza key={pizza.name} pizzaObject={pizza} />
+            ))}
+          </ul>
+        </>
       ) : (
-        <p>We're still working on our menu. Please come back later :)</p>
+        <p>We're still working on our menu. Please check back later.</p>
       )}
     </main>
   );
 }
 
-function Pizza(props) {
-  if (props.pizzaObject.soldOut) return null;
+function Pizza({ pizzaObject }) {
+  const { name, ingredients, price, photoName, soldOut } = pizzaObject;
 
   return (
-    <li className="pizza">
-      <img src={props.pizzaObject.photoName} alt={props.pizzaObject.name} />
+    <li className={`pizza ${soldOut ? "sold-out" : ""}`}>
+      <img src={photoName} alt={name} />
       <div>
-        <h3>{props.pizzaObject.name}</h3>
-        <p>{props.pizzaObject.ingredients}</p>
-        <span>{props.pizzaObject.price}</span>
+        <h3>{name}</h3>
+        <p>{ingredients}</p>
+        <span className="price">{soldOut ? "SOLD OUT" : `$${price}`}</span>
       </div>
     </li>
   );
 }
 
-function Footer() {
-  const hour = new Date().getHours();
-  const openHour = 12;
-  const closeHour = 22;
-  const isOpen = hour >= openHour && hour <= closeHour;
-
+function Footer({ darkMode, setDarkMode }) {
   return (
     <footer className="footer">
-      {isOpen ? (
-        <Order closeHour={closeHour} />
-      ) : (
-        <p>
-          We're happy to welcome you between {closeHour}:00 and {closeHour}:00.
-        </p>
-      )}
+      <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? (
+          <span className="toggle-icon">🌞 Light Mode</span>
+        ) : (
+          <span className="toggle-icon">🌙 Dark Mode</span>
+        )}
+      </button>
+      <p>© 2024 Fast React Pizza Co. All Rights Reserved</p>
     </footer>
   );
 }
 
-function Order(props) {
-  return (
-    <div className="order">
-      <p>
-        We're open until {props.closeHour}:00. Come visit us or order online.{" "}
-      </p>
-      <button className="btn">Order</button>
-    </div>
-  );
-}
-
-const root = ReactDom.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
