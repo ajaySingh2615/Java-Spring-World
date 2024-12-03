@@ -129,6 +129,8 @@ function Footer({ darkMode, setDarkMode }) {
   );
 }
 
+// Root element
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
