@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
-import { use } from "react";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -217,8 +216,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
-
-  if (imdbRating > 8) [isTop, setIsTop] = useState(true);
 
   const {
     Title: title,
