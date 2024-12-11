@@ -1,0 +1,357 @@
+/* Root variables for color palette */
+:root {
+  --color-primary: #7b4bdb;
+  --color-primary-light: #9a66f7;
+  --color-primary-dark: #5e37a0;
+  --color-accent: #ff8c00;
+  --color-background-100: #2f3542;
+  --color-background-500: #2e3539;
+  --color-background-900: #212529;
+  --color-text: #f1f3f5;
+  --color-text-dark: #adb5bd;
+  --color-light-background: #f8f9fa;
+  --color-border: rgba(255, 255, 255, 0.2);
+  --color-shadow: rgba(0, 0, 0, 0.15);
+  --color-red: #e74c3c;
+  --color-green: #2ecc71;
+  --color-blue: #3498db;
+  --color-yellow: #f39c12;
+  --color-purple: #9b59b6;
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
+}
+
+/* General resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+  padding: 3.2rem;
+  transition: all 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar Design */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.4rem 3.2rem;
+  background: linear-gradient(90deg, #6a1b9a, #ab47bc);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar .logo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-bar .logo span {
+  font-size: 3.6rem;
+  color: var(--color-accent);
+}
+
+.nav-bar .search {
+  width: 35rem;
+  padding: 1.2rem 1.8rem;
+  font-size: 1.6rem;
+  border-radius: 2rem;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  color: #333;
+}
+
+.nav-bar .search:focus {
+  outline: none;
+  box-shadow: 0 2px 10px var(--color-accent);
+  transform: scale(1.05);
+}
+
+.nav-bar .search::placeholder {
+  color: var(--color-text-dark);
+}
+
+/* Button Toggle for theme */
+.btn-toggle {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 2.4rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.btn-toggle:hover {
+  transform: rotate(180deg);
+}
+
+/* Main Section Layout */
+.main {
+  margin-top: 3.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+}
+
+.main .box {
+  background-color: var(--color-background-500);
+  border-radius: 1rem;
+  padding: 2.4rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.main .box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+/* Loader Styling */
+.loader {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--color-primary-light);
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* List and Item Styling */
+.list {
+  list-style: none;
+  padding: 1.2rem 0;
+  transition: all 0.3s ease;
+}
+
+.list li {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  padding: 1.8rem 3.2rem;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-background-100);
+  border-radius: 1rem;
+  transition: 0.3s ease;
+}
+
+.list li:hover {
+  background-color: var(--color-background-500);
+}
+
+.list img {
+  width: 100%;
+  height: auto;
+  grid-row: span 2;
+  border-radius: 0.8rem;
+}
+
+.list h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.list div {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.list p {
+  font-size: 1.4rem;
+  color: var(--color-text-dark);
+}
+
+/* Delete Button Styling */
+.btn-delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--color-red);
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-delete:hover {
+  background-color: var(--color-red-dark);
+}
+
+/* Summary Box Styling */
+.summary {
+  background-color: var(--color-background-100);
+  border-radius: 1rem;
+  padding: 2.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.summary h2 {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin-bottom: 1.6rem;
+  color: var(--color-accent);
+}
+
+.summary div {
+  display: flex;
+  gap: 2.4rem;
+  font-weight: bold;
+  color: var(--color-text-dark);
+}
+
+/* Details Section */
+.details {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.details header {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.details-overview {
+  background-color: var(--color-background-light);
+  border-radius: 1rem;
+  padding: 2.4rem;
+  margin-top: 2.4rem;
+}
+
+.details-overview h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.2rem;
+  color: var(--color-primary-dark);
+}
+
+.details img {
+  width: 30%;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Rating Component */
+.rating {
+  background-color: var(--color-background-light);
+  border-radius: 1rem;
+  padding: 2.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 2.4rem;
+}
+
+.rating .stars {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.rating .stars span {
+  font-size: 2.4rem;
+  color: var(--color-yellow);
+}
+
+/* Add Button Styling */
+.btn-add {
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  padding: 1.2rem 2.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #f57c00;
+}
+
+/* Timer or Countdown Styling */
+.seconds {
+  background-color: var(--color-background-100);
+  width: 10rem;
+  border-radius: 3rem;
+  text-align: center;
+  font-size: 2.4rem;
+  padding: 1.2rem 2.4rem;
+  margin-top: 3.2rem;
+}
+
+/* Modal Overlay and Content */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 3.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  width: 60%;
+  max-width: 50rem;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
